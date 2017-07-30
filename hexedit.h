@@ -1,6 +1,9 @@
 #ifndef HEXEDIT_H
 #define HEXEDIT_H
 
+extern char lastkey[];
+extern int keycount;
+
 #include "config.h"
 #include <stdio.h>
 #include <stdlib.h>

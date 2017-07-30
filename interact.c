@@ -1,3 +1,5 @@
+int keycount = 0;
+char lastkey[64];
 /* hexedit -- Hexadecimal Editor for Binary Files
    Copyright (C) 1998 Pixel (Pascal Rigaux)
 
@@ -334,6 +336,8 @@ static void short_help(void)
 /*******************************************************************************/
 int key_to_function(int key)
 {
+  keycount++;
+  sprintf(lastkey,"Key:%i", key);
   oldcursor = cursor;
   oldcursorOffset = cursorOffset;
   oldbase = base;
@@ -546,6 +550,7 @@ static void escaped_command(void)
   int c, i;
 
   c = getch();
+  sprintf(lastkey,"Esc:%i",c );
   switch (c)
   {
   case KEY_RIGHT:
@@ -664,6 +669,7 @@ static void escaped_command(void)
   case '[': 
     for (i = 0;; i++) { tmp[i] = c = getch(); if (!isdigit(c)) break; }
     tmp[i + 1] = '\0';
+    sprintf(lastkey,"EE:%s",tmp );
     
     if (0);
     else if (streq(tmp, "2~")) yank();

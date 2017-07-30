@@ -207,6 +207,9 @@ void display(void)
   if (MAX(fileSize, lastEditedLoc)) printw("/0x%llX", getfilesize());
   if (mode == bySector) printw("--sector %lld", (base + cursor) / SECTOR_SIZE);
 
+  clr_line( 0 );
+  mvprintw(0,0,"%i:%s",keycount,lastkey);
+
   move(cursor / lineLength, computeCursorXCurrentPos());
 }
 
